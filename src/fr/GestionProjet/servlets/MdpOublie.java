@@ -45,7 +45,17 @@ public class MdpOublie extends HttpServlet {
 		String from = "a.charvet2@hotmail.fr";
 		String host = "localhost";
 		Properties properties = System.getProperties();
-		properties.setProperty("mail.smtp.host", host);
+		properties.put("mail.transport.protocol", "smtp");
+		properties.put("mail.smtp.host", "smtp.live.com");
+		properties.put("mail.smtp.port", "587");
+		properties.put("mail.smtp.auth", "true");
+		
+		Authenticator authenticator = new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication("", "");
+			}
+		};
+		
 		Session session = Session.getDefaultInstance(properties);
 		
 		try {
