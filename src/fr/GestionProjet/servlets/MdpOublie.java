@@ -60,6 +60,7 @@ public class MdpOublie extends HttpServlet {
 			
 		} catch (MessagingException e) {
 			// TODO: handle exception
+			response.sendRedirect("/GestionProjet/mdpOublie");
 		}
 		
 	}

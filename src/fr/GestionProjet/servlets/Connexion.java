@@ -45,8 +45,7 @@ public class Connexion extends HttpServlet {
 		if (user.equals(userTest) && pass.equals(mdpTest)) {
 			response.sendRedirect("/GestionProjet/accueil");
 	    } else {
-	        // Afficher une erreur
-	    }
+	    	response.sendRedirect("/GestionProjet/");	    }
 	}
 
 }
