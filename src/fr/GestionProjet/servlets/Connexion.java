@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Connexion
  */
-@WebServlet("")
+@WebServlet("/connexion")
 public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String CHAMP_USERNAME = "username";
