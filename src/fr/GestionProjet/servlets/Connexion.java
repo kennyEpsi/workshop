@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Connexion
  */
-@WebServlet("/connexion")
+@WebServlet("")
 public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String CHAMP_USERNAME = "username";
@@ -40,10 +40,10 @@ public class Connexion extends HttpServlet {
 		String user = request.getParameter(CHAMP_USERNAME);
 		String pass = request.getParameter(CHAMP_PASS);
 		
-		String userTest = "testeur";
-		String mdpTest = "passwd";
+		String userTest = "test";
+		String mdpTest = "test";
 		if (user.equals(userTest) && pass.equals(mdpTest)) {
-			response.sendRedirect("/GestionProjet/Accueil");
+			response.sendRedirect("/GestionProjet/accueil");
 	    } else {
 	        // Afficher une erreur
 	    }

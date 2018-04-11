@@ -12,7 +12,7 @@
 <div class="limiter">
 		<div class="container-connexion">
 			<div class="bulle-connexion p-b-160 p-t-50">
-				<form class="connexion-form validate-form">
+				<form class="connexion-form validate-form" method="post">
 					<span class="connexion-form-titre p-b-43">
 						Bienvenue
 					</span>

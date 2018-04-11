@@ -35,7 +35,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 <div class="w3-top">
   <div class="w3-top w3-left-align w3-large" style="padding:6px; background-color:grey;color:white">
     <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-    <a href="#"><span class="glyphicon glyphicon-log-out"></span> Deconnexion</a></li>
+    <a href="/GestionProjet/"><span class="glyphicon glyphicon-log-out"></span> Deconnexion</a></li>
   </div>
 </div>
 
