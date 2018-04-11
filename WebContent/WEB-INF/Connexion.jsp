@@ -14,18 +14,16 @@
 			<div class="bulle-connexion p-b-160 p-t-50">
 				<form class="connexion-form validate-form">
 					<span class="connexion-form-titre p-b-43">
-						Bienvenue !
+						Bienvenue
 					</span>
 					
 					<div class="wrap-insertion rs1 validate-input" data-validate = "Le nom d'utilisateur est requis">
-						<input class="insertion" type="text" name="username">
-						<span class="label-insertion">Nom d'utilisateur</span>
+						<input class="insertion" type="text" name="username" id="user" placeholder="Nom d'utilisateur">
 					</div>
 					
 					
 					<div class="wrap-insertion rs2 validate-input" data-validate="Le mot de passe est requis">
-						<input class="insertion" type="password" name="pass">
-						<span class="label-insertion">Mot de passe</span>
+						<input class="insertion" type="password" name="pass" placeholder="Mot de passe">
 					</div>
 
 					<div class="container-connexion-form-btn">
@@ -35,7 +33,7 @@
 					</div>
 					
 					<div class="text-center w-full p-t-23">
-						<a href="#" class="txt1">
+						<a href="/GestionProjet/mdpOublie" class="txt1">
 							Mot de passe oublié?
 						</a>
 					</div>
@@ -45,6 +43,7 @@
 	</div>
 
 	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 
 </body>
 </html>
