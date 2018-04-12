@@ -47,7 +47,7 @@ public class Utilisateur {
 				e.printStackTrace();
 			}
 		}
-		return mail;
+		return mail; 
 	}
 	
 	public String getMotDePasse(String pMotDePasse) {
