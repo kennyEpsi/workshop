@@ -15,6 +15,7 @@ public class Utilisateur {
 	Connection connexion = null;
 	PreparedStatement ps =  null;
 	ResultSet result = null;
+	int update = 0;
 	
 	public String getEmail(String pMail) {
 		String mail = null;
@@ -123,7 +124,7 @@ public class Utilisateur {
 			connexion = DriverManager.getConnection(url, user, mdp); 
 			ps = connexion.prepareStatement("UPDATE GROUPE SET GRP_TOKEN = GRP_TOKEN - 1  WHERE GRP_ID = ?");
 			ps.setInt(1,pId);
-			result = ps.executeQuery();
+			update = ps.executeUpdate();
 			result.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

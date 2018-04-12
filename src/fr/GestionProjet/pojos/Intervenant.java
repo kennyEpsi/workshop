@@ -15,15 +15,15 @@ public class Intervenant {
 	Connection connexion = null;
 	PreparedStatement ps =  null;
 	ResultSet result = null;
+	int update = 0;
 	
 	public void updateToken(int pId) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			
 			connexion = DriverManager.getConnection(url, user, mdp); 
-			ps = connexion.prepareStatement("UPDATE INTERVENANT SET INT_TOKEN = INT_TOKEN + 1 WHERE INT_ID = ?");
+			ps = connexion.prepareStatement("UPDATE INTERVENANT SET INT_TOKEN = INT_TOKEN + 1  WHERE INT_ID = ?");
 			ps.setInt(1,pId);
-			result = ps.executeQuery();
+			update = ps.executeUpdate();
 			result.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -15,8 +15,7 @@ import fr.GestionProjet.pojos.Utilisateur;
  */
 @WebServlet("/ListeIntervenants")
 public class ListeIntervenants extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+	private static final long serialVersionUID = 1L;       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -41,8 +40,17 @@ public class ListeIntervenants extends HttpServlet {
 		Utilisateur user = new Utilisateur();
 		Intervenant intervenant = new Intervenant();
 		
-		user.updateToken(1);
+		try {
 		intervenant.updateToken(1);
+		}catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+		try {
+		user.updateToken(1);
+		}catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+		
 		
         response.sendRedirect("/GestionProjet/ListeIntervenants");
 	}

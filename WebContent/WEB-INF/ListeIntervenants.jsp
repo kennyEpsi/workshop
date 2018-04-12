@@ -82,7 +82,10 @@ html, body, h1, h2, h3, h4, h5, h6 {
         <ul>
  <c:forEach var="row" items="${result.rows}">
    <form method="post" action="ListeIntervenants">
-   <input type="submit" style="font-size: 14px" value="${row.INT_NOM}  ${row.INT_PRENOM}"> </button><span style="font-size : 20px"> &nbsp;${row.INT_TOKEN}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">  
+   <%
+		request.setAttribute("ID","${row.INT_ID}");
+	%>
+   <input type="submit" style="font-size: 14px" value="${row.INT_NOM}  ${row.INT_PRENOM}" /><span style="font-size : 20px"> &nbsp;${row.INT_TOKEN}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">  
 </form>
 </c:forEach>
         </ul>
