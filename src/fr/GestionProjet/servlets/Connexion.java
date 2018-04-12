@@ -56,7 +56,7 @@ public class Connexion extends HttpServlet {
 		if (user.equals(email) && pass.equals(pwd)) {
 	        session.setAttribute("email", email);
 	        session.setAttribute("pwd", pwd);
-			response.sendRedirect("/GestionProjet/accueil");
+			response.sendRedirect("/GestionProjet/groupe");
 		} else {
 				response.sendRedirect("/GestionProjet/");
 		  }

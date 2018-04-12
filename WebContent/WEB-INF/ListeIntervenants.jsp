@@ -64,7 +64,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 	<h4 class="w3-bar-item">
 		<b>Menu</b>
 	</h4>
-	<a class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/accueil">Groupe</a> <a
+	<a class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/groupe">Groupe</a> <a
 		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujet</a> <a
 		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeIntervenants">Intervenant</a>
 	</nav>
