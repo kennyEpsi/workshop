@@ -2,8 +2,9 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
 <html>
-<title>Groupe</title>
+<title>Sujet</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -13,6 +14,8 @@
 	href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+    href="${pageContext.request.contextPath}/css/skeleton.css">
 <style>
 html, body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif;
@@ -63,12 +66,32 @@ html, body, h1, h2, h3, h4, h5, h6 {
 	</h4>
 	<a class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/accueil">Groupe</a> <a
 		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujet</a> <a
-		class="w3-bar-item w3-button w3-hover-black" href="#">Intervenant</a>
+		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeIntervenants">Intervenant</a>
 	</nav>
+	
+<sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver" url = "jdbc:mysql://localhost:3306/workshop2" user = "root"  password = ""/>
+       
+<sql:query dataSource = "${snapshot}" var = "result">
+    SELECT grp_nom from groupe;
+</sql:query>
+
+<div align="center" style="margin-top: 45px;margin-left:250px" class="w3-main">
+	<h2>Liste des groupes</h2>
+    	<ul>
+        	<li>
+        		<a href="#" style="font-size : 24px">Groupe 1</a>
+        	</li>
+ <c:forEach var="row" items="${result.rows}">
+   <li>
+		<a href="#">${row}</a>
+	</li>  
+</c:forEach>
+        </ul>
+</div>
 
 	<div class="w3-overlay w3-hide-large" onclick="w3_close()"
 		style="cursor: pointer" title="close side menu" id="myOverlay"></div>
-
+	
 	<footer class="footer w3-main" style="margin-left:250px">
 	<h6>Kenny / Alexandre / Ludovic / Anne-Christy</h6>
 	</footer>

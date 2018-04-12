@@ -66,30 +66,32 @@ html, body, h1, h2, h3, h4, h5, h6 {
 	</h4>
 	<a class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/accueil">Groupe</a> <a
 		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujet</a> <a
-		class="w3-bar-item w3-button w3-hover-black" href="#">Intervenant</a>
+		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeIntervenants">Intervenant</a>
 	</nav>
-
-	<div class="w3-overlay w3-hide-large" onclick="w3_close()"
-		style="cursor: pointer" title="close side menu" id="myOverlay"></div>
-		
-		<sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
-        url = "jdbc:mysql://localhost:3306/workshop2"
-        user = "root"  password = ""/>
+	
+<sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver" url = "jdbc:mysql://localhost:3306/workshop2" user = "root"  password = ""/>
        
 <sql:query dataSource = "${snapshot}" var = "result">
     SELECT suj_nom from sujet;
 </sql:query>
 
-    <div align="center" style="margin-top: 50px">
-        <h2>Liste des sujets</h2>
-        <ul>
-            <li><a href="#">Sujet 1</a></li>
+<div align="center" style="margin-top: 45px;margin-left:250px" class="w3-main">
+	<h2>Liste des sujets</h2>
+    	<ul>
+        	<li>
+        		<a href="#" style="font-size : 24px">Sujet 1</a>
+        	</li>
  <c:forEach var="row" items="${result.rows}">
-   <li><a href="#">${row}</a></li>  
+   <li>
+		<a href="#">${row}</a>
+	</li>  
 </c:forEach>
         </ul>
-    </div>
+</div>
 
+	<div class="w3-overlay w3-hide-large" onclick="w3_close()"
+		style="cursor: pointer" title="close side menu" id="myOverlay"></div>
+	
 	<footer class="footer w3-main" style="margin-left:250px">
 	<h6>Kenny / Alexandre / Ludovic / Anne-Christy</h6>
 	</footer>

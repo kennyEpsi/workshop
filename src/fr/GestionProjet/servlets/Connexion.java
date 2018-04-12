@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.GestionProjet.pojos.Utilisateur;
 
@@ -50,10 +51,11 @@ public class Connexion extends HttpServlet {
 		String email = utilisateur.getEmail(user);
 		String pwd = utilisateur.getMotDePasse(pass);
 		
-		//String userTest = "test";
-		//String mdpTest = "test";
+        HttpSession session = request.getSession();
 	
 		if (user.equals(email) && pass.equals(pwd)) {
+	        session.setAttribute("email", email);
+	        session.setAttribute("pwd", pwd);
 			response.sendRedirect("/GestionProjet/accueil");
 		} else {
 				response.sendRedirect("/GestionProjet/");

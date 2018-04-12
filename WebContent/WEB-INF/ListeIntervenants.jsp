@@ -66,7 +66,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 	</h4>
 	<a class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/accueil">Groupe</a> <a
 		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujet</a> <a
-		class="w3-bar-item w3-button w3-hover-black" href="#">Intervenant</a>
+		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeIntervenants">Intervenant</a>
 	</nav>
 
 	<div class="w3-overlay w3-hide-large" onclick="w3_close()"
@@ -81,10 +81,10 @@ html, body, h1, h2, h3, h4, h5, h6 {
     INNER JOIN intervenant ON utilisateur.UTI_ID = intervenant.UTI_ID;
 </sql:query>
 
-    <div align="center" style="margin-top: 50px">
+    <div align="center" style="margin-top: 45px;margin-left:250px" class="w3-main">
         <h2>Liste des intervenants</h2>
         <ul>
-            <li><a href="#">Intervenant 1</a></li>
+            <li><a href="#" style="font-size : 24px">Intervenant 1</a></li>
  <c:forEach var="row" items="${result.rows}">
    <li><a href="#">${row}</a></li>  
 </c:forEach>
