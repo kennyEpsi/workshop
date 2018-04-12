@@ -42,8 +42,6 @@ public class MdpOublie extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String destinataire = request.getParameter(CHAMP_EMAIL);
-		String from = "a.charvet2@hotmail.fr";
-		String host = "localhost";
 		Properties properties = System.getProperties();
 		properties.put("mail.transport.protocol", "smtp");
 		properties.put("mail.smtp.host", "smtp.office365.com");
