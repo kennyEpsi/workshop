@@ -85,7 +85,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 </c:forEach>
         </ul>
     </div>
-
+    
 	<footer class="footer w3-main" style="margin-left:250px">
 	<h6>Kenny / Alexandre / Ludovic / Anne-Christy</h6>
 	</footer>
