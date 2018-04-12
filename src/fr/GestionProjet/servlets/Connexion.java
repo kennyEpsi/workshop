@@ -1,11 +1,16 @@
 package fr.GestionProjet.servlets;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fr.GestionProjet.pojos.Utilisateur;
 
 /**
  * Servlet implementation class Connexion
@@ -40,12 +45,20 @@ public class Connexion extends HttpServlet {
 		String user = request.getParameter(CHAMP_USERNAME);
 		String pass = request.getParameter(CHAMP_PASS);
 		
-		String userTest = "test";
-		String mdpTest = "test";
-		if (user.equals(userTest) && pass.equals(mdpTest)) {
+		Utilisateur utilisateur = new Utilisateur();
+		
+		String email = utilisateur.getEmail(user);
+		String pwd = utilisateur.getMotDePasse(pass);
+		
+		//String userTest = "test";
+		//String mdpTest = "test";
+	
+		if (email == user && pwd == pass) {
 			response.sendRedirect("/GestionProjet/accueil");
-	    } else {
-	    	response.sendRedirect("/GestionProjet/");	    }
-	}
-
+		} else {
+				response.sendRedirect("/GestionProjet/");
+		  }
+	} 
 }
+
+
