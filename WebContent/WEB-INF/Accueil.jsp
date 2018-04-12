@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-<title>Accueil Etudiant</title>
+<title>Groupe</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -61,8 +61,8 @@ html, body, h1, h2, h3, h4, h5, h6 {
 	<h4 class="w3-bar-item">
 		<b>Menu</b>
 	</h4>
-	<a class="w3-bar-item w3-button w3-hover-black" href="#">Groupe</a> <a
-		class="w3-bar-item w3-button w3-hover-black" href="#">Sujet</a> <a
+	<a class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/accueil">Groupe</a> <a
+		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujet</a> <a
 		class="w3-bar-item w3-button w3-hover-black" href="#">Intervenant</a>
 	</nav>
 

@@ -53,7 +53,7 @@ public class Connexion extends HttpServlet {
 		//String userTest = "test";
 		//String mdpTest = "test";
 	
-		if (email == user && pwd == pass) {
+		if (user.equals(email) && pass.equals(pwd)) {
 			response.sendRedirect("/GestionProjet/accueil");
 		} else {
 				response.sendRedirect("/GestionProjet/");
