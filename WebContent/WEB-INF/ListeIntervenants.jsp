@@ -65,8 +65,8 @@ html, body, h1, h2, h3, h4, h5, h6 {
 		<b>Menu</b>
 	</h4>
 	<a class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/groupe">Groupe</a> <a
-		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujet</a> <a
-		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeIntervenants">Intervenant</a>
+		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujets</a> <a
+		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeIntervenants">Intervenants</a>
 	</nav>
 		
 		<sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
@@ -74,14 +74,16 @@ html, body, h1, h2, h3, h4, h5, h6 {
         user = "root"  password = ""/>
        
 <sql:query dataSource = "${snapshot}" var = "result">
-    SELECT INT_NOM, INT_PRENOM from intervenant;
+    SELECT * from intervenant;
 </sql:query>
 
     <div align="center" style="margin-top: 45px;margin-left:250px" class="w3-main">
         <h2>Liste des intervenants</h2>
         <ul>
  <c:forEach var="row" items="${result.rows}">
-   <li><a href="#" style="font-size: 24px">${row.INT_NOM}  ${row.INT_PRENOM}</a></li>  
+   <form method="post" action="ListeIntervenants">
+   <input type="submit" style="font-size: 14px" value="${row.INT_NOM}  ${row.INT_PRENOM}"> </button><span style="font-size : 20px"> &nbsp;${row.INT_TOKEN}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">  
+</form>
 </c:forEach>
         </ul>
     </div>

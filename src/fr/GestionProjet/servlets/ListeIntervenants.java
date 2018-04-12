@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.GestionProjet.pojos.Intervenant;
+import fr.GestionProjet.pojos.Utilisateur;
+
 /**
  * Servlet implementation class ListeIntervenants
  */
@@ -35,7 +38,13 @@ public class ListeIntervenants extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		Utilisateur user = new Utilisateur();
+		Intervenant intervenant = new Intervenant();
+		
+		user.updateToken(1);
+		intervenant.updateToken(1);
+		
+        response.sendRedirect("/GestionProjet/ListeIntervenants");
 	}
 
 }

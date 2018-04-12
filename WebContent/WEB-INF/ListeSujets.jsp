@@ -65,8 +65,8 @@ html, body, h1, h2, h3, h4, h5, h6 {
 		<b>Menu</b>
 	</h4>
 	<a class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/groupe">Groupe</a> <a
-		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujet</a> <a
-		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeIntervenants">Intervenant</a>
+		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujets</a> <a
+		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeIntervenants">Intervenants</a>
 	</nav>
 	
 <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver" url = "jdbc:mysql://localhost:3306/workshop2" user = "root"  password = ""/>

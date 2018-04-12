@@ -116,4 +116,31 @@ public class Utilisateur {
 		}
 		return password;
 	}
+	
+	public void updateToken(int pId) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connexion = DriverManager.getConnection(url, user, mdp); 
+			ps = connexion.prepareStatement("UPDATE GROUPE SET GRP_TOKEN = GRP_TOKEN - 1  WHERE GRP_ID = ?");
+			ps.setInt(1,pId);
+			result = ps.executeQuery();
+			result.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}catch(ClassNotFoundException e) {
+			
+		}
+		finally {
+			try {
+				if (connexion != null)
+					connexion.close();
+				if (result != null)
+					result.close();
+				if (ps != null)
+					ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

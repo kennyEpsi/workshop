@@ -65,14 +65,18 @@ html, body, h1, h2, h3, h4, h5, h6 {
 		<b>Menu</b>
 	</h4>
 	<a class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/groupe">Groupe</a> <a
-		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujet</a> <a
-		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeIntervenants">Intervenant</a>
+		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeSujets">Sujets</a> <a
+		class="w3-bar-item w3-button w3-hover-black" href="/GestionProjet/ListeIntervenants">Intervenants</a>
 	</nav>
 	
 <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver" url = "jdbc:mysql://localhost:3306/workshop2" user = "root"  password = ""/>
        
 <sql:query dataSource = "${snapshot}" var = "result">
-    SELECT grp_nom from groupe;
+    SELECT * from groupe;
+</sql:query>
+
+<sql:query dataSource = "${snapshot}" var = "result2">
+    SELECT * from etudiant where etu_grp_id = 1  ;
 </sql:query>
 
 <div align="center" style="margin-top: 45px;margin-left:250px" class="w3-main">
@@ -80,10 +84,14 @@ html, body, h1, h2, h3, h4, h5, h6 {
     	<ul>
  <c:forEach var="row" items="${result.rows}">
    <li>
-		<a href="#" style="font-size: 24px">${row.grp_nom}</a>
+		<a href="#" style="font-size: 24px">${row.grp_nom} :</a> <span style="font-size : 20px"> &nbsp;${row.grp_token}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">
 	</li>  
 </c:forEach>
-        </ul>
+ <c:forEach var="row" items="${result2.rows}">
+   <li>
+		<span style="font-size: 20px">${row.etu_nom} ${row.etu_prenom}</span>
+	</li>  
+</c:forEach>
 </div>
 
 
