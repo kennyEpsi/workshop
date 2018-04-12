@@ -74,16 +74,14 @@ html, body, h1, h2, h3, h4, h5, h6 {
         user = "root"  password = ""/>
        
 <sql:query dataSource = "${snapshot}" var = "result">
-    SELECT uti_nom from utilisateur 
-    INNER JOIN intervenant ON utilisateur.UTI_ID = intervenant.UTI_ID;
+    SELECT INT_NOM, INT_PRENOM from intervenant;
 </sql:query>
 
     <div align="center" style="margin-top: 45px;margin-left:250px" class="w3-main">
         <h2>Liste des intervenants</h2>
         <ul>
-            <li><a href="#" style="font-size : 24px">Intervenant 1</a></li>
  <c:forEach var="row" items="${result.rows}">
-   <li><a href="#">${row}</a></li>  
+   <li><a href="#" style="font-size: 24px">${row.INT_NOM}  ${row.INT_PRENOM}</a></li>  
 </c:forEach>
         </ul>
     </div>

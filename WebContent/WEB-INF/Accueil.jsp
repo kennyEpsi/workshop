@@ -78,12 +78,9 @@ html, body, h1, h2, h3, h4, h5, h6 {
 <div align="center" style="margin-top: 45px;margin-left:250px" class="w3-main">
 	<h2>Liste des groupes</h2>
     	<ul>
-        	<li>
-        		<a href="#" style="font-size : 24px">Groupe 1</a>
-        	</li>
  <c:forEach var="row" items="${result.rows}">
    <li>
-		<a href="#">${row}</a>
+		<a href="#" style="font-size: 24px">${row.grp_nom}</a>
 	</li>  
 </c:forEach>
         </ul>

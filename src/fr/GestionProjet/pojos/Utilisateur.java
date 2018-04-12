@@ -22,12 +22,11 @@ public class Utilisateur {
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			connexion = DriverManager.getConnection(url, user, mdp);
-			ps = connexion.prepareStatement("SELECT * FROM utilisateur WHERE UTI_EMAIL = ?");
+			ps = connexion.prepareStatement("SELECT * FROM etudiant WHERE ETU_EMAIL = ?");
 			ps.setString(1,pMail);
 			result = ps.executeQuery();
 			while (result.next()) {
-				mail = result.getString("UTI_EMAIL");
-				System.out.println("Email=" + mail);
+				mail = result.getString("ETU_EMAIL");
 			}
 			result.close();
 		} catch (SQLException e) {
@@ -57,12 +56,45 @@ public class Utilisateur {
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			connexion = DriverManager.getConnection(url, user, mdp);
-			ps = connexion.prepareStatement("SELECT * FROM utilisateur WHERE UTI_MDP = ?");
+			ps = connexion.prepareStatement("SELECT * FROM etudiant WHERE ETU_MDP = ?");
 			ps.setString(1,pMotDePasse);
 			result = ps.executeQuery();
 			while (result.next()) {
-				password = result.getString("UTI_MDP");
-				System.out.println("Password=" + password);
+				password = result.getString("ETU_MDP");
+			}
+			result.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}catch(ClassNotFoundException e) {
+			
+		}
+		finally {
+			try {
+				if (connexion != null)
+					connexion.close();
+				if (result != null)
+					result.close();
+				if (ps != null)
+					ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return password;
+	}
+	
+	public String getMotDePasseOublie(String pMail) {
+		String password = null;
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			connexion = DriverManager.getConnection(url, user, mdp);
+			ps = connexion.prepareStatement("SELECT * FROM etudiant WHERE ETU_EMAIL = ?");
+			ps.setString(1,pMail);
+			result = ps.executeQuery();
+			while (result.next()) {
+				password = result.getString("ETU_MDP");
 			}
 			result.close();
 		} catch (SQLException e) {

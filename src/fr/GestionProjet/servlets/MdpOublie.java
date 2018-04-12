@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fr.GestionProjet.pojos.Utilisateur;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -49,6 +52,9 @@ public class MdpOublie extends HttpServlet {
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.starttls.enable", true);
 		
+		Utilisateur utilisateur = new Utilisateur();
+
+		
 		Authenticator authenticator = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication("epsidontreply@outlook.com", "Epsiworkshop69$");
@@ -57,18 +63,22 @@ public class MdpOublie extends HttpServlet {
 		
 		Session session = Session.getDefaultInstance(properties, authenticator);
 		
+		
+		if(utilisateur.getMotDePasseOublie(destinataire) != null) {
 		try {
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom("epsidontreply@outlook.com");
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinataire));
 			message.setSubject("Mot de passe oublié");
-			message.setText("Vous avez demandé votre mot de passe, le voici");
+			message.setText("Vous avez demandé votre mot de passe, le voici : " + utilisateur.getMotDePasseOublie(destinataire));
 			
 			Transport.send(message);
 			response.sendRedirect("/GestionProjet/");
 			
 		} catch (MessagingException e) {
 			// TODO: handle exception
+			e.printStackTrace();
+		}}else {
 			response.sendRedirect("/GestionProjet/mdpOublie");
 		}
 		
