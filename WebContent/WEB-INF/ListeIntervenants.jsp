@@ -16,6 +16,18 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css"
     href="${pageContext.request.contextPath}/css/skeleton.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <style>
 html, body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif;
@@ -47,7 +59,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 			<a
 				class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1"
 				href="javascript:void(0)" onclick="w3_open()"><i
-				class="fa fa-bars"></i></a> <a href="/GestionProjet/"><span
+				class="fa fa-bars"></i></a> <a href="/GestionProjet/" style="color: #FFF"><span
 				class="glyphicon glyphicon-log-out"></span> Deconnexion</a>
 			</li>
 		</div>
@@ -85,11 +97,52 @@ html, body, h1, h2, h3, h4, h5, h6 {
    <%
 		request.setAttribute("ID","${row.INT_ID}");
 	%>
-   <input type="submit" style="font-size: 14px" value="${row.INT_NOM}  ${row.INT_PRENOM}" /><span style="font-size : 20px"> &nbsp;${row.INT_TOKEN}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">  
+   <input type="button" style="font-size: 14px" value="${row.INT_NOM}  ${row.INT_PRENOM}" data-toggle="modal" data-target="#exampleModal"/>&nbsp;<span style="font-size : 20px" class="badge">${row.INT_TOKEN}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">  
 </form>
 </c:forEach>
         </ul>
     </div>
+    
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Contacter un intervenant</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <br/>
+            <br/>
+                        <br/>
+                        <br/>
+            
+      
+<form method="post">
+      <div class="form-group"> <!-- Date input -->
+        <label class="control-label" for="date">Date</label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+      </div>
+      <div class="form-group"> <!-- Submit button -->
+        <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+      </div>
+     </form>
+      </div>
+      <div class="modal-footer">
+      <div class="btn-group">
+            <div style="width:50%">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+        </div>
+        <div style="width:50%">
+        <form method="post" action="ListeIntervenants"><button type="submit" class="btn btn-success">Valider</button></form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     
 	<footer class="footer w3-main" style="margin-left:250px">
 	<h6>Kenny / Alexandre / Ludovic / Anne-Christy</h6>
@@ -118,6 +171,18 @@ function w3_close() {
     mySidebar.style.display = "none";
     overlayBg.style.display = "none";
 }
+
+$(document).ready(function(){
+    var date_input=$('input[name="date"]'); //our date input has the name "date"
+    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+    var options={
+      format: 'mm/dd/yyyy',
+      container: container,
+      todayHighlight: true,
+      autoclose: true,
+    };
+    date_input.datepicker(options);
+  })
 </script>
 
 </body>

@@ -16,6 +16,11 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css"
     href="${pageContext.request.contextPath}/css/skeleton.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    
 <style>
 html, body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif;
@@ -47,7 +52,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 			<a
 				class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1"
 				href="javascript:void(0)" onclick="w3_open()"><i
-				class="fa fa-bars"></i></a> <a href="/GestionProjet/"><span
+				class="fa fa-bars"></i></a><a href="/GestionProjet/" style="color: #FFF"><span
 				class="glyphicon glyphicon-log-out"></span> Deconnexion</a>
 			</li>
 		</div>
@@ -72,19 +77,19 @@ html, body, h1, h2, h3, h4, h5, h6 {
 <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver" url = "jdbc:mysql://localhost:3306/workshop2" user = "root"  password = ""/>
        
 <sql:query dataSource = "${snapshot}" var = "result">
-    SELECT * from groupe;
+    SELECT * from groupe where grp_id = 1;
 </sql:query>
 
 <sql:query dataSource = "${snapshot}" var = "result2">
-    SELECT * from etudiant where etu_grp_id = 1  ;
+    SELECT * from etudiant where etu_grp_id = 1;
 </sql:query>
 
-<div align="center" style="margin-top: 45px;margin-left:250px" class="w3-main">
-	<h2>Liste des groupes</h2>
-    	<ul>
+<div align="center" style="margin-top: 45px;margin-left:250px;" class="w3-main">
+	<h2>Détails du groupe</h2>
+    	<ul >
  <c:forEach var="row" items="${result.rows}">
    <li>
-		<a href="#" style="font-size: 24px">${row.grp_nom} :</a> <span style="font-size : 20px"> &nbsp;${row.grp_token}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">
+		<a href="#" style="font-size: 24px">${row.grp_nom} :</a> <span style="font-size : 20px" class="badge">${row.grp_token}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">
 	</li>  
 </c:forEach>
  <c:forEach var="row" items="${result2.rows}">
@@ -92,10 +97,14 @@ html, body, h1, h2, h3, h4, h5, h6 {
 		<span style="font-size: 20px">${row.etu_nom} ${row.etu_prenom}</span>
 	</li>  
 </c:forEach>
+</ul>
 </div>
 
+<div align="center" style="margin-left : 260px;position: fixed; bottom: 0; margin-bottom : 40px;" class="w3-main">
+<label class="alert alert-info">Vous pouvez retrouver ici le détails de votre groupe ainsi que le votre solde de jetons disponible pour la prise de rendez-vous/contact avec un intervenant</label>
+<label class="alert alert-info">Vous pouvez retrouver la liste des intervenants et prendre contact avec eux dans la rubrique intervenants du menu</label>
+</div>
 
-	
 	<footer class="footer w3-main" style="margin-left:250px">
 	<h6>Kenny / Alexandre / Ludovic / Anne-Christy</h6>
 	</footer>
