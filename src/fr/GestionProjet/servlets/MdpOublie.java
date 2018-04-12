@@ -46,22 +46,23 @@ public class MdpOublie extends HttpServlet {
 		String host = "localhost";
 		Properties properties = System.getProperties();
 		properties.put("mail.transport.protocol", "smtp");
-		properties.put("mail.smtp.host", "smtp.live.com");
+		properties.put("mail.smtp.host", "smtp.office365.com");
 		properties.put("mail.smtp.port", "587");
 		properties.put("mail.smtp.auth", "true");
+		properties.put("mail.smtp.starttls.enable", true);
 		
 		Authenticator authenticator = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("", "");
+				return new PasswordAuthentication("epsidontreply@outlook.com", "Epsiworkshop69$");
 			}
 		};
 		
-		Session session = Session.getDefaultInstance(properties);
+		Session session = Session.getDefaultInstance(properties, authenticator);
 		
 		try {
 			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(from));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinataire));
+			message.setFrom("epsidontreply@outlook.com");
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinataire));
 			message.setSubject("Mot de passe oublié");
 			message.setText("Vous avez demandé votre mot de passe, le voici");
 			
