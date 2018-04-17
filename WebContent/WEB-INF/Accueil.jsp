@@ -88,9 +88,9 @@ html, body, h1, h2, h3, h4, h5, h6 {
 	<h2>Détails du groupe</h2>
     	<ul >
  <c:forEach var="row" items="${result.rows}">
-   <li>
-		<a href="#" style="font-size: 24px">${row.grp_nom} :</a> <span style="font-size : 20px" class="badge">${row.grp_token}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">
-	</li>  
+ <form method="post" action="ListeIntervenants">
+   <input type="button" style="font-size: 14px" value="${row.grp_nom}" data-toggle="modal" data-target="#exampleModal"/>&nbsp;<span style="font-size : 20px" class="badge">${row.grp_token}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">  
+</form>
 </c:forEach>
  <c:forEach var="row" items="${result2.rows}">
    <li>
@@ -101,8 +101,32 @@ html, body, h1, h2, h3, h4, h5, h6 {
 </div>
 
 <div align="center" style="margin-left : 260px;position: fixed; bottom: 0; margin-bottom : 40px;" class="w3-main">
-<label class="alert alert-info">Vous pouvez retrouver ici le détails de votre groupe ainsi que le votre solde de jetons disponible pour la prise de rendez-vous/contact avec un intervenant</label>
+<label class="alert alert-info">Vous pouvez retrouver ici les détails de votre groupe ainsi que votre solde de jetons disponibles pour la prise de rendez-vous/contact avec un intervenant</label>
 <label class="alert alert-info">Vous pouvez retrouver la liste des intervenants et prendre contact avec eux dans la rubrique intervenants du menu</label>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+       <c:forEach var="row" items="${result.rows}">
+        <h3 class="modal-title" id="exampleModalLabel" style="font-size : 40px">${row.grp_nom}</h3>
+        </c:forEach>
+      </div>
+      <div class="modal-body">
+       <c:forEach var="row" items="${result2.rows}">
+   <li><span style="font-size: 20px">${row.etu_nom} ${row.etu_prenom}</span></li> 
+<li style="list-style-type:none;"><span style="font-size: 14px" class="alert-info">Email : ${row.etu_email}</span></li>  
+</c:forEach>
+      <div class="modal-footer">
+      <div class="btn-group">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 	<footer class="footer w3-main" style="margin-left:250px">

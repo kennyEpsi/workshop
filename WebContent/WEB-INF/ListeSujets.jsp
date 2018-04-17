@@ -75,23 +75,49 @@ html, body, h1, h2, h3, h4, h5, h6 {
 <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver" url = "jdbc:mysql://localhost:3306/workshop2" user = "root"  password = ""/>
        
 <sql:query dataSource = "${snapshot}" var = "result">
-    SELECT suj_nom from sujet;
+    SELECT * from sujet;
+</sql:query>
+
+<sql:query dataSource = "${snapshot}" var = "result2">
+    SELECT * from sujet where suj_id = 1;
 </sql:query>
 
 <div align="center" style="margin-top: 45px;margin-left:250px;" class="w3-main">
 	<h2>Liste des sujets</h2>
-    	<ul>
  <c:forEach var="row" items="${result.rows}">
-   <li>
-		<a href="#" style="font-size: 24px">${row.suj_nom}</a>
-	</li>  
+		<input type="button" value="${row.suj_nom}" style="font-size: 14px" data-toggle="modal" data-target="#exampleModal" name="${row.suj_nom}"><br/><br/>
 </c:forEach>
-        </ul>
+        
 </div>
 
 <div align="center" style="margin-left : 260px;position: fixed;bottom: 0; margin-bottom : 40px; width : 100%;" class="w3-main">
 <label class="alert alert-info">Vous pouvez ici retrouver la liste des sujets pour un projet</label><br/>
-<label class="alert alert-info">Vous pouvez vous positioner sur des sujets</label>
+<label class="alert alert-info">Vous pouvez vous positionner sur des sujets</label>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">   	 
+      <c:forEach var="row" items="${result2.rows}">
+        <h3 class="modal-title" id="exampleModalLabel" style="font-size: 40px">${row.suj_nom}</h3>
+       </c:forEach>
+      </div>
+      <div class="modal-body">
+   	 <c:forEach var="row" items="${result2.rows}">
+   	 <li style="list-style-type:none;"><span style="font-size: 20px">Description : ${row.suj_description}</span></li>
+   	 <li style="list-style-type:none;"><span style="font-size: 20px">Technologie utilisée : ${row.suj_techno}</span></li> 
+   	 
+	</c:forEach>
+      <div class="modal-footer">
+      <div class="btn-group">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 	
 	<footer class="footer w3-main" style="margin-left:250px">

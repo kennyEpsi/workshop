@@ -89,55 +89,52 @@ html, body, h1, h2, h3, h4, h5, h6 {
     SELECT * from intervenant;
 </sql:query>
 
+<sql:query dataSource = "${snapshot}" var = "result2">
+    SELECT * from intervenant where int_id = 1;
+</sql:query>
+
     <div align="center" style="margin-top: 45px;margin-left:250px" class="w3-main">
         <h2>Liste des intervenants</h2>
         <ul>
  <c:forEach var="row" items="${result.rows}">
    <form method="post" action="ListeIntervenants">
-   <%
-		request.setAttribute("ID","${row.INT_ID}");
-	%>
    <input type="button" style="font-size: 14px" value="${row.INT_NOM}  ${row.INT_PRENOM}" data-toggle="modal" data-target="#exampleModal"/>&nbsp;<span style="font-size : 20px" class="badge">${row.INT_TOKEN}</span> <img src="${pageContext.request.contextPath}/img/token.png" alt="token" height="30" width="30">  
 </form>
 </c:forEach>
         </ul>
     </div>
     
+    <div align="center" style="margin-left : 260px;position: fixed;bottom: 0; margin-bottom : 40px; width : 100%;" class="w3-main">
+<label class="alert alert-info" role="alert">Vous pouvez retrouver ici la liste des intervenants et convenir d'un rendez-vous ou leur envoyer un message</label><br/>
+<label class="alert alert-info">Toute prise de rendez-vous ou d'envoi de message vous débitera de <u>1 TOKEN</u></label><br/>
+
+</div>
+    
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Contacter un intervenant</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<c:forEach var="row" items="${result2.rows}">
+        <h3 class="modal-title" id="exampleModalLabel">Contacter un intervenant - ${row.int_nom} ${row.int_prenom}</h3>
+</c:forEach>
       </div>
       <div class="modal-body">
-      <br/>
-            <br/>
-                        <br/>
-                        <br/>
-            
-      
 <form method="post">
-      <div class="form-group"> <!-- Date input -->
+      <div class="form-group">
+        <label class="control-label" for="date">Question</label>
+        <textarea  class="form-control" id="date" name="question" placeholder="question" type="text" rows="3"></textarea>
+        <br/>
         <label class="control-label" for="date">Date</label>
         <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-      </div>
-      <div class="form-group"> <!-- Submit button -->
-        <button class="btn btn-primary " name="submit" type="submit">Submit</button>
       </div>
      </form>
       </div>
       <div class="modal-footer">
       <div class="btn-group">
-            <div style="width:50%">
+      <form method="post" action="ListeIntervenants" style="margin:0">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-        </div>
-        <div style="width:50%">
-        <form method="post" action="ListeIntervenants"><button type="submit" class="btn btn-success">Valider</button></form>
-        </div>
+        <button type="submit" class="btn btn-success">Valider</button></form>
         </div>
       </div>
     </div>
